@@ -1,0 +1,37 @@
+body {
+	background: url(/statics/images/logo.png) no-repeat 49px 20px;
+	font-family: arial;
+	font-size: 12px;
+	color: #333;
+	padding: 110px 50px 50px 50px;
+	margin: 0;
+}
+a {
+	color: #41a4c7;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.wfi-home-block {
+	margin: 10px;
+	padding: 10px;
+	width: 120px;
+	height: 120px;
+	float :left;
+	background: #eee;
+	overflow: hidden;
+	-webkit-opacity: .5;
+}
+.wfi-home-block:hover {
+	-webkit-opacity: .9;
+}
+.wfi-home-block h2 {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0;
+}
+.wfi-home-block p {
+	font-size: 11px;
+	margin: 0;
+}

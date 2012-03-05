@@ -1,0 +1,29 @@
+{% extends "common/skeleton.html" %}
+{% loadmacros "common/macros.html" %}
+
+{% block title %}
+	{{ block.super }} - {{ message }} 
+{% endblock %}
+
+{% block meta-fb-title %}
+	{{ block.super }} - {{ message }} 
+{% endblock %}
+
+{% block meta-fb-url %}
+	{{ url }} 
+{% endblock %}
+
+{% block content %}
+	<div id="wfi-pageTarget"></div>
+    <textarea id="wfi-pageTemplateSource" style="display:none;">{{ html }}</textarea>
+    
+    {% usemacro includeJs "js/lib/jquery-1.4.4.min.js&js/lib/trimpath-template-1.0.38.js&" "False" %}
+    {% usemacro includeJs "js/CSSParser.js&js/DateUtils.js&js/CountEngine.js&js/PageEngine.js&js/TemplateParser.js&" "True" %}
+    {% autoescape off %}
+    <script>
+    	var json = {{ json }};
+		var tplObj = new wfi.TemplateParser($("#wfi-pageTemplateSource").val());
+    	var page = new wfi.PageEngine(json, $("#wfi-pageTarget"), tplObj);
+    </script>
+	{% endautoescape %}
+{% endblock %}

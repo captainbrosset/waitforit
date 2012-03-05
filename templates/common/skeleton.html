@@ -1,0 +1,39 @@
+{% comment %}
+
+THIS IS THE MAIN PAGE STRUCTURE THAT MUST BE EXTENDED BY SPECIFIC PAGES
+HERE IS THE LIST OF BLOCKS THAT MAY BE OVERRIDDEN
+
+- meta-description
+- meta-keywords
+
+- meta-fb-title
+- meta-fb-url
+- meta-fb-description
+
+- title
+- head-extra-info
+- content
+
+{% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="{% block meta-description %}Create your own custom countdown page. It's very simple to use and fun to share with others. Just choose a date and time, a few options, and we create a unique URL for you to share with your friends. Access the URL to see the countdown in real time.{% endblock %}">
+		<meta name="keywords" content="{% block meta-keywords %}countdown, count down, time, date, share, fun, wait for it, count up{% endblock %}">
+		
+		<!-- meta property="og:image" content="http://ia.media-imdb.com/rock.jpg"/ -->
+		<meta property="og:title" content="{% block meta-fb-title %}wait for it{% endblock %}"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content="{% block meta-fb-url %}{{ url }}{% endblock %}"/>
+		<meta property="og:site_name" content="wait for it"/>
+		<meta property="og:description" content="{% block meta-fb-description %}Create your own custom countdown page, for fun, for real, for work{% endblock %}"/>
+		
+	    <title>{% block title %}wait for it{% endblock %}</title>
+		{% block head-extra-info %}{% endblock %}
+	</head>
+	<body>
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>

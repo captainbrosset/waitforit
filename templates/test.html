@@ -1,0 +1,82 @@
+{% loadmacros "common/macros.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	    <title>test</title>
+	    {% usemacro includeCss "css/test.css&" "True" %}
+		<link rel="icon" type="image/png" href="/statics/favicon.png" />
+	</head>
+	<body>
+		<ul id="wfi-bookmark">
+			<li></li>
+			<li class="wfi-bookmark-item"></li>
+			<li></li>
+		</ul>
+		
+		<ul id="wfi-font-picker">
+			<li _font="Times New Roman"></li>
+			<li _font="Arial"></li>
+			<li _font="Verdana"></li>
+			<li _font="Tahoma"></li>
+			<li _font="Georgia"></li>
+			<li _font="Courier"></li>
+			<li _font="Helvetica"></li>
+			<li _font="Comic Sans MS"></li>
+			<li _font="Garamond"></li>
+			<li _font="Impact, Charcoal"></li>
+		</ul>
+		
+		<ul id="wfi-color-picker"></ul>
+		
+		<div id="wfi-image-picker">
+			<label>Image url:</label>
+			<input type="text" class="url" />
+			<label>Image position:</label>
+			<select class='position'>
+				<option>top left</option>
+				<option>top right</option>
+				<option>bottom right</option>
+				<option>bottom left</option>
+			</select>
+			<label>Image size (%):</label>
+			<input type="text" class="size" />
+		</div>
+		
+		<div id="wfi-custom-container">
+			<img src="http://upload.wikimedia.org/wikipedia/commons/c/ce/Transparent.gif" id="wfi-custom-background" />
+			
+			<div class="editTools">
+				<div class="bodyColor" title="change the page background color"></div>
+				<div class="bodyImage" title="add a background image"></div>
+			</div>
+			
+			<div id="wfi-custom-counter">
+				<h1 class="editable" title="click to edit">00:00:00</h1>
+				<div class="editTools">
+					<div class="handle" title="drag me around"></div>
+					<div class="font" title="change the font"></div>
+					<div class="sizeUp" title="increase the font size"></div>
+					<div class="sizeDown" title="decrease the font size"></div>
+					<div class="color" title="change the text color"></div>
+				</div>
+				<input type="text" value="" class="edit" />
+			</div>
+			<div id="wfi-custom-title">
+				<h2 class="editable" title="click to edit">your title goes here</h2>
+				<div class="editTools">
+					<div class="handle" title="drag me around"></div>
+					<div class="font" title="change the font"></div>
+					<div class="sizeUp" title="increase the font size"></div>
+					<div class="sizeDown" title="decrease the font size"></div>
+					<div class="color" title="change the text color"></div>
+				</div>
+				<input type="text" value="" class="edit" />
+			</div>
+		</div>
+
+	    {% usemacro includeJs "js/lib/jquery-1.4.4.min.js&js/lib/jquery-ui-1.8.11.custom.min.js&" "False" %}		
+	    {% usemacro includeJs "js/DateUtils.js&js/CountEngine.js&js/test.js&" "True" %}
+	</body>
+</html>

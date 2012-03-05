@@ -1,0 +1,7 @@
+{% macro includeJs filename forcereload %}
+	<script src="/_statics/{{ filename }}{% ifequal forcereload "True" %}?ts={{ meta.staticts }}{% endifequal %}"></script>	
+{% endmacro %}
+
+{% macro includeCss filename forcereload %}
+	<link rel="stylesheet" href="/_statics/{{ filename }}{% ifequal forcereload "True" %}?ts={{ meta.staticts }}{% endifequal %}" type="text/css" media="screen" />
+{% endmacro %}

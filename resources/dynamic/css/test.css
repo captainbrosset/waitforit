@@ -1,0 +1,154 @@
+body {
+	background: #dff0f4 url(/statics/images/tools/editableBack.gif) repeat top left;
+}
+#wfi-custom-container {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	bottom: 10px;
+	right: 10px;
+	font-family: arial;
+	background: white;
+}
+#wfi-custom-container #wfi-custom-background {
+	position: absolute;
+	z-index:1;
+}
+#wfi-custom-counter, #wfi-custom-title {
+	position: absolute;
+	z-index:2;
+	left: 100px;
+	padding-top: 16px;
+}
+#wfi-custom-counter {
+	top: 100px;
+}
+#wfi-custom-title {
+	top: 200px;
+}
+#wfi-custom-container h1, #wfi-custom-container h2 {
+	margin: 0;
+	padding: 0;
+}
+#wfi-custom-container .editTools {
+	height: 18px;
+	width: 90px;
+	cursor: pointer;
+	position: absolute;
+	z-index:3;
+	top: 0;
+	left: 0;
+	display: none;
+	background: #dff0f4 url(/statics/images/tools/editableBack.gif) repeat top left;
+}
+#wfi-custom-container > .editTools {
+	display: block;
+	width: 36px;
+}
+#wfi-custom-container .editTools div {
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	top: 0;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#wfi-custom-container .bodyColor {
+	left: 0;
+	background-image: url(/statics/images/tools/color.gif);
+}
+#wfi-custom-container .bodyImage {
+	left: 18px;
+	background-image: url(/statics/images/tools/background.gif);
+}
+#wfi-custom-container .bodyImageRepeat {
+	left: 36px;
+	background-image: url(/statics/images/tools/repeat.gif);
+}
+
+#wfi-custom-container .handle {
+	left: 0;
+	background-image: url(/statics/images/tools/move.gif);
+}
+#wfi-custom-container .font {
+	left: 18px;
+	background-image: url(/statics/images/tools/font.gif);
+}
+#wfi-custom-container .sizeUp {
+	left: 36px;
+	background-image: url(/statics/images/tools/plus.gif);
+}
+#wfi-custom-container .sizeDown {
+	left: 54px;
+	background-image: url(/statics/images/tools/minus.gif);
+}
+#wfi-custom-container .color {
+	left: 72px;
+	background-image: url(/statics/images/tools/color.gif);
+}
+#wfi-custom-container .editing {
+	background: #dff0f4 url(/statics/images/tools/editableBack.gif) repeat top left;
+}
+#wfi-custom-container input.edit {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	top: 16px;
+	right: 0;
+}
+#wfi-font-picker, #wfi-color-picker, #wfi-image-picker {
+	display: none;
+	position: absolute;
+	z-index: 3000;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #dff0f4;
+	width: 300px !important;
+	height: auto !important;
+	-webkit-box-shadow: 0px 1px 2px #999;
+	-moz-box-shadow: 0px 1px 2px #999;
+}
+#wfi-color-picker {
+	border-width: 0 1px 1px 0;
+	width: 288px !important;
+}
+#wfi-font-picker li, #wfi-color-picker li {
+	list-style-type: none;
+	margin: 0;
+	padding: 5px 20px;
+	background: white;
+	border: 1px solid #dff0f4;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	border-width: 1px 1px 0 1px;
+}
+#wfi-color-picker li {
+	border-width: 1px 0 0 1px;
+	width: 15px;
+	height: 15px;
+	float: left;
+	padding: 0;
+}
+#wfi-font-picker li:hover, #wfi-color-picker li:hover {
+	background: #dff0f4;
+}
+
+#wfi-image-picker {
+	background: white;
+}
+#wfi-image-picker label {
+	width: 100px;
+	float: left;
+	clear: both;
+	font-size: 12px;
+	margin-left: 5px;
+}
+#wfi-image-picker input, #wfi-image-picker select {
+	width: 180px;
+	float: right;
+	margin-right: 5px;
+}

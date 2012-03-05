@@ -1,0 +1,179 @@
+{% extends "common/skeleton.html" %}
+{% loadmacros "common/macros.html" %}
+
+{% block title %}
+{{ block.super }} - create your own page
+{% endblock %}
+
+{% block meta-fb-title %}
+{{ block.super }} - create your own page
+{% endblock %}
+
+{% block meta-fb-url %}
+{{ url }}
+{% endblock %}
+
+{% block content %}
+
+{% usemacro includeJs "js/lib/jquery-1.4.4.min.js&" "False" %}
+
+
+
+<form action="new" method="post">
+	{% if step == "type" %}
+	<div class="line type">
+		<label>
+			Type of page
+		</label>
+		<label>Count to a date in the future</label>
+		<input type="radio" name="pageType" value="FixedCounterPage" />
+		<label>Count from a date in the past</label>
+		<input type="radio" name="pageType" value="FixedCounterPage" />
+		<label>Count for a given time</label>
+		<input type="radio" name="pageType" value="RelativeCounterPage" />
+	</div>
+	{% endif %}
+	{% if step == "timestamp" %}
+		<input type="hidden" name="timestamp" id="timestamp" value="" />
+		<input type="hidden" name="pageType" value="{{ pageType }}">
+		{% if pageType == "FixedCounterPage" %}
+		<div class="line fixedDate">
+			<label>
+				Date
+			</label>
+			<select name="dd" id="dd">
+				<option>Day</option>
+				<option value="01">01</option>
+				<option value="02">02</option>
+				<option value="03">03</option>
+				<option value="04">04</option>
+				<option value="05">05</option>
+				<option value="06">06</option>
+				<option value="07">07</option>
+				<option value="08">08</option>
+				<option value="09">09</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27">27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+				<option value="31">31</option>
+			</select>
+			<select name="MM" id="MM">
+				<option>Month</option>
+				<option value="01">January</option>
+				<option value="02">February</option>
+				<option value="03">March</option>
+				<option value="04">April</option>
+				<option value="05">May</option>
+				<option value="06">June</option>
+				<option value="07">July</option>
+				<option value="08">August</option>
+				<option value="09">September</option>
+				<option value="10">October</option>
+				<option value="11">November</option>
+				<option value="12">December</option>
+			</select>
+			<input type="text" value="Year" name="yyyy" id="yyyy" />
+			<select name="HH" id="HH">
+				<option>Hours</option>
+				<option value="01">01</option>
+				<option value="02">02</option>
+				<option value="03">03</option>
+				<option value="04">04</option>
+				<option value="05">05</option>
+				<option value="06">06</option>
+				<option value="07">07</option>
+				<option value="08">08</option>
+				<option value="09">09</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+			</select>
+			<select name="Min" id="Min">
+				<option>Minutes</option>
+				<option value="00">00</option>
+				<option value="01">01</option>
+				<option value="02">02</option>
+				<option value="03">03</option>
+				<option value="04">04</option>
+				<option>...</option>
+			</select>
+		</div>
+		<script>
+			$("#dd, #MM, #yyyy, #HH, #Min").blur(function() {
+				$("#timestamp").val($("#MM").val() + "/" + $("#dd").val() + "/" + $("#yyyy").val() + " " + $("#HH").val() + ":" + $("#Min").val() + ":00");
+			});
+		</script>
+		{% endif %}
+		{% if pageType == "RelativeCounterPage" %}
+		<div class="line duration">
+			<label>
+				Duration
+			</label>
+			<input name="duration" id="duration" type="text" value="Nb of" />
+			<select name="typeOfDuration" id="typeOfDuration">
+				<option value="s">seconds</option>
+				<option value="m">minutes</option>
+				<option value="h">hours</option>
+				<option value="d">days</option>
+			</select>
+		</div>
+		<script>
+			$("#duration, #typeOfDuration").blur(function() {
+				var factors = {
+					"s": 1,
+					"m": 60,
+					"h": 60 * 60,
+					"d": 60 * 60 * 24
+				};
+				var nbOfSeconds = parseInt($("#duration").val()) * factors[$("#typeOfDuration").val()];
+				$("#timestamp").val(nbOfSeconds);
+			});
+		</script>
+		{% endif %}
+	{% endif %}
+	{% if step == "template" %}
+		<h2>Select a template from the list below for your counter page:</h2>
+		<ul>
+		{% for template in templates %}
+			<li>
+				<input type="radio" name="template" value="{{ template.key }}" />
+				Template {{ template.name }}, created by {{ template.createdBy }} on {{ template.dateAdded|date:"D d M Y" }}
+			</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+	{% if step == "end" %}
+		YAY!!
+	{% endif %}
+	<button type="submit">Next</button>
+</form>
+{% endblock %}

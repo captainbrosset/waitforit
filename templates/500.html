@@ -1,0 +1,12 @@
+{% extends "common/skeleton.html" %}
+
+{% block title %}
+	{{ block.super }} - Unexpected error
+{% endblock %}
+
+{% block content %}
+	Sorry, an unexpected error occured, please try again later.
+	{% if debugMode %}
+		<pre>{{ exception.args }}<br />{{ exception.message }}<br />{{ trace }}</pre>
+	{% endif %}
+{% endblock %}

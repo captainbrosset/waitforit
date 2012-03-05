@@ -1,0 +1,10 @@
+application: this-is-the-end
+version: 20
+runtime: python
+api_version: 1
+
+handlers:
+- url: /statics
+  static_dir: resources/static
+- url: .*
+  script: main.py

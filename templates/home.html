@@ -1,0 +1,29 @@
+{% extends "common/skeleton.html" %}
+{% loadmacros "common/macros.html" %}
+
+{% block content %}
+    {% usemacro includeJs "js/lib/jquery-1.4.4.min.js&js/lib/trimpath-template-1.0.38.js&" "False" %}
+    {% usemacro includeJs "js/CSSParser.js&js/DateUtils.js&js/CountEngine.js&js/PageEngine.js&js/TemplateParser.js&" "True" %}
+
+    {% usemacro includeCss "css/home.css&" "True" %}
+
+	<div class="wfi-home-block">
+		<h2>+</h2>
+		<p><a href="#">Create your own!</a></p>
+	</div>
+    
+    {% for p in pages %}
+		<div class="wfi-home-block">
+			<div id="wfi-pageTarget-{{ p.index }}"></div>
+			<p><a href="/{{ p.b64index }}">Display this counter ...</a></p>
+        	<textarea id="wfi-pageTemplateSource-{{ p.index }}" style="display:none;">{{ p.html }}</textarea>
+		</div>
+		{% autoescape off %}
+        <script>
+        	var json{{ p.index }} = {{ p.json }};
+			var tplObj{{ p.index }} = new wfi.TemplateParser($("#wfi-pageTemplateSource-{{ p.index }}").val());
+        	var page{{ p.index }} = new wfi.PageEngine(json{{ p.index }}, $("#wfi-pageTarget-{{ p.index }}"), tplObj{{ p.index }});
+        </script>
+		{% endautoescape %}
+    {% endfor %}
+{% endblock %}
